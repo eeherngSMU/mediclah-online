@@ -32,7 +32,7 @@ export const POST = async (req: NextRequest) => {
         const dImages = await page.evaluate(() => {
             const imgElements = document.querySelectorAll('.sm-gallery-images img');
             return Array.from(imgElements)
-                .map(img => img.src)
+                .map(img => (img as HTMLImageElement).src)
                 .filter(src => !src.endsWith('.gif'));
         });
 
